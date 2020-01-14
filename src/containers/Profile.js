@@ -30,19 +30,21 @@ class Profile extends Component {
     if (loading) {
       return <div>Loading...</div>
     }
+
+    const items = [
+      {label: 'html_url', value:  <Link url={data.avatar_url} title='Github URL' />},
+      {label: 'repose_url', value: data.respos_url },
+      {label: 'name', value: data.name },
+      {label: 'company', value: data.company },
+      {label: 'location', value: data.location },
+      {label: 'email', value: data.email },
+      {label: 'bio', value: data.bio },
+    ]
+
     return (
       <div className='Profile-container'>
         <img className='Profile-avatar' src={data.avatar_url} alt='avatar' />
-        <ul>
-          <li><strong>avatar_url:</strong> <Link url={data.avatar_url} title='Github URL' /></li>
-          <li><strong>html_url:</strong> {data.html_url}</li>
-          <li><strong>repos_url:</strong> {data.repos_url}</li>
-          <li><strong>name:</strong> {data.name}</li>
-          <li><strong>company:</strong> {data.company}</li>
-          <li><strong>location:</strong> {data.location}</li>
-          <li><strong>email:</strong> {data.email}</li>
-          <li><strong>bio:</strong> {data.bio}</li>
-        </ul>
+        <List items={items} />
       </div>
     );
   }
